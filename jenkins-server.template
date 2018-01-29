@@ -121,7 +121,7 @@
         "JenkinsServer" : {
             "Type" : "AWS::EC2::Instance",
             "Metadata" : {
-                "Comment" : "Install Jenkins, nginx and the Jenkins CodeDeploy/CodePipeline plugin",
+                "Comment" : "Install Jenkins , git and nginx",
                 "AWS::CloudFormation::Init" : {
                     "configSets" : {
                         "install_all" : [
@@ -280,9 +280,7 @@
                                 "# Wait 30 seconds to allow Jenkins to startup\n",
                                 "echo \"Waiting 30 seconds for Jenkins to start.....\"\n",
                                 "sleep 30\n",
-								"gem install rake\n",
-								"gem install haml\n",
-								"gem install minitest\n",
+				
                                 "# Install the required plugins\n",
                                 "cd /var/lib/jenkins/plugins\n",
                                 "curl -O -L https://updates.jenkins-ci.org/latest/multiple-scms.hpi\n",
@@ -291,9 +289,6 @@
                                 "curl -O -L https://updates.jenkins-ci.org/latest/git-client.hpi\n",
                                 "curl -O -L https://updates.jenkins-ci.org/latest/github.hpi\n",
                                 "curl -O -L https://updates.jenkins-ci.org/latest/git.hpi\n",
-                                "curl -O -L https://updates.jenkins-ci.org/latest/codedeploy.hpi\n",
-                                "curl -O -L https://updates.jenkins-ci.org/latest/aws-codepipeline.hpi\n",
-								"curl -O -L https://updates.jenkins-ci.org/latest/rake.hpi\n",
                                 "chown jenkins:jenkins *.hpi\n",
                                 "# Restarting Jenkins\n",
                                 "service jenkins restart\n"
@@ -341,7 +336,7 @@
             "Properties" : {
                 "Path" : "/",
                 "ManagedPolicyArns" : [
-                    "arn:aws:iam::aws:policy/AWSCodePipelineCustomActionAccess"
+                    "arn:aws:iam::aws:policy/AWSCustomActionAccess"
                 ],
                 "AssumeRolePolicyDocument" : {
                     "Statement" : [
