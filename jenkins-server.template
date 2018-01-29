@@ -336,7 +336,7 @@
             "Properties" : {
                 "Path" : "/",
                 "ManagedPolicyArns" : [
-                    "arn:aws:iam::aws:policy/AWSCustomActionAccess"
+                    "arn:aws:iam::aws:policy/AWSCodePipelineCustomActionAccess"
                 ],
                 "AssumeRolePolicyDocument" : {
                     "Statement" : [
